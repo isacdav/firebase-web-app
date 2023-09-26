@@ -1,0 +1,24 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#D5C000",
+    "activityBar.activeBorder": "#222222",
+    "activityBar.background": "#D5C000",
+    "activityBar.foreground": "#222222",
+    "activityBar.inactiveForeground": "#444444",
+    "activityBarBadge.background": "#222222",
+    "activityBarBadge.foreground": "#F0F0F0",
+    "statusBar.foreground": "#F0F0F0",
+    "titleBar.activeBackground": "#B3A100",
+    "titleBar.activeForeground": "#111111",
+    "titleBar.inactiveBackground": "#B3A100",
+    "titleBar.inactiveForeground": "#C4C4C4"
+  },
+  "eslint.workingDirectories": ["./src"],
+  "eslint.format.enable": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true,
+    "source.sortMembers": true
+  }
+}

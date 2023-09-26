@@ -15,3 +15,12 @@ pnpm install
 ```bash
 pnpm dev
 ```
+
+## Roadmap
+
+- [ ] Auth
+- [ ] Auth SSR
+- [ ] State management
+- [ ] Styles / theme
+- [ ] UI components
+- [ ] Tests

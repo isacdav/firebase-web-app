@@ -5,7 +5,6 @@
 .eslintignore
 package-lock.json
 package.json
-*.md
 build/
 coverage/
 keys/
