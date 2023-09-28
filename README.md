@@ -24,3 +24,4 @@ pnpm dev
 - [ ] Styles / theme
 - [ ] UI components
 - [ ] Tests
+- [ ] Allow emulators use

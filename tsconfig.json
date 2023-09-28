@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -20,8 +21,12 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/components/*": ["./src/components/index.ts"],
-      "@/hooks/*": ["./src/hooks/index.ts"],
+      "@/app/*": ["./src/app/*"],
+      "@/common/*": ["./src/common/*"],
+      "@/components": ["./src/components/index.ts"],
+      "@/constants/*": ["./src/common/constants/*"],
+      "@/firebase/*": ["./src/services/firebase/*"],
+      "@/hooks": ["./src/hooks/index.ts"],
       "@/services/*": ["./src/services/*"]
     }
   },

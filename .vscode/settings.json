@@ -13,7 +13,6 @@
     "titleBar.inactiveBackground": "#B3A100",
     "titleBar.inactiveForeground": "#C4C4C4"
   },
-  "eslint.workingDirectories": ["./src"],
   "eslint.format.enable": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
