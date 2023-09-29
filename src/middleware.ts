@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
-import { API_AUTH_LOGIN } from '@/common/constants/api';
+import { API_AUTH_LOGIN } from '@/constants/api';
 
 /**
  * Middleware to check if user is authenticated if not redirect to login page

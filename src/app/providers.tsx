@@ -6,8 +6,8 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { AuthProvider, FirebaseAppProvider, FirestoreProvider, useFirebaseApp } from 'reactfire';
 
-import { firebaseConfig } from '@/common/constants/firebase-config';
 import { AuthContextProvider } from '@/context/auth-context';
+import { firebaseConfig } from '@/lib/firebase/firebase-config';
 
 interface Props {
   children: ReactNode;

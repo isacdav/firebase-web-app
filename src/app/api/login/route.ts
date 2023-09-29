@@ -55,7 +55,3 @@ export async function POST(req: NextRequest, res: NextResponse): Promise<NextRes
 
   return NextResponse.json({}, { status: 200 });
 }
-
-// TODO: check if is necessary to update user session cookie
-// if the client does not refresh the token it is not necessary
-export async function PUT() {}

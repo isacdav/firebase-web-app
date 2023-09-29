@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { onIdTokenChanged, type User } from 'firebase/auth';
 import { useAuth } from 'reactfire';
 
-import { API_AUTH_LOGIN, API_AUTH_SIGNOUT } from '@/common/constants/api';
+import { API_AUTH_LOGIN, API_AUTH_SIGNOUT } from '@/constants/api';
 
 interface AuthContextState {
   user: User | undefined;

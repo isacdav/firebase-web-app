@@ -22,13 +22,13 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/app/*": ["./src/app/*"],
-      "@/common/*": ["./src/common/*"],
       "@/components": ["./src/components/index.ts"],
       "@/constants/*": ["./src/common/constants/*"],
       "@/context/*": ["./src/context/*"],
       "@/firebase/*": ["src/lib/firebase/*"],
       "@/hooks": ["./src/hooks/index.ts"],
-      "@/lib/*": ["src/lib/*"]
+      "@/lib/*": ["src/lib/*"],
+      "@/utils/*": ["./src/common/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
