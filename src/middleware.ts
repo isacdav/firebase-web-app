@@ -1,4 +1,6 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
+
+import { API_AUTH_LOGIN } from '@/common/constants/api';
 
 /**
  * Middleware to check if user is authenticated if not redirect to login page
@@ -9,22 +11,26 @@ export async function middleware(req: NextRequest, res: NextResponse): Promise<N
   const session = req.cookies.get('session');
 
   if (!session) {
-    return NextResponse.redirect(new URL('/login', req.url));
+    return NextResponse.redirect(new URL('/login', req.url), { status: 302 });
   }
 
-  const loginStatus = await fetch(`${req.nextUrl.origin}/api/login`, {
+  // GET request to check if user is authenticated
+  const loginStatus = await fetch(`${req.nextUrl.origin}${API_AUTH_LOGIN}`, {
     headers: {
       Cookie: `session=${session?.value}`,
     },
   });
 
   if (loginStatus.status !== 200) {
-    return NextResponse.redirect(new URL('/login', req.url));
+    return NextResponse.redirect(new URL('/login', req.url), { status: 302 });
   }
 
   return NextResponse.next();
 }
 
+/**
+ * Add routes to be protected
+ */
 export const config = {
   matcher: ['/', '/dashboard/:path*'],
 };

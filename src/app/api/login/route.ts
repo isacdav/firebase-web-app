@@ -2,7 +2,7 @@ import admin from 'firebase-admin';
 import { cookies, headers } from 'next/headers';
 import { NextResponse, type NextRequest } from 'next/server';
 
-import { initFirebaseAdmin } from '@/services/firebase';
+import { initFirebaseAdmin } from '@/lib/firebase/admin';
 
 initFirebaseAdmin();
 

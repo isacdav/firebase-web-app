@@ -16,16 +16,18 @@
   },
   "plugins": ["react", "import", "unused-imports", "css-import-order"],
   "rules": {
-    "max-len": ["error", { "code": 140 }],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "max-len": ["error", { "code": 120 }],
+    "unused-imports/no-unused-imports": "error",
     "@typescript-eslint/semi": 0,
     "@typescript-eslint/comma-dangle": 0,
+    "@typescript-eslint/no-misused-promises": 0,
     "@typescript-eslint/no-floating-promises": 0,
     "@typescript-eslint/member-delimiter-style": 0,
     "@typescript-eslint/strict-boolean-expressions": 0,
     "@typescript-eslint/space-before-function-paren": 0,
     "@typescript-eslint/explicit-function-return-type": 1,
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
     "import/order": [
       "error",
       {
@@ -44,7 +46,6 @@
           "caseInsensitive": true
         }
       }
-    ],
-    "unused-imports/no-unused-imports": "error"
+    ]
   }
 }
