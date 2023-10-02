@@ -37,7 +37,8 @@ export async function POST(req: NextRequest, res: NextResponse): Promise<NextRes
   const decodedToken = await admin.auth().verifyIdToken(idToken);
 
   if (decodedToken) {
-    const expiresIn = 60 * 60 * 24 * 5 * 1000;
+    // expressed this way for readability
+    const expiresIn = 1000 * 60 * 60 * 24 * 5;
     const sessionCookie = await admin.auth().createSessionCookie(idToken, {
       expiresIn,
     });
