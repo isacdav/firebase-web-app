@@ -5,8 +5,9 @@ import { emulatorConfig } from '@/lib/firebase/firebase-config';
 /**
  * Initialize Firebase Admin for server-side rendering
  */
-export const initFirebaseAdmin = (): void => {
-  // Setting environment variables just if is 'enabled' in .env*
+
+try {
+  // Setting environment variables just if 'enabled' = true in .env*
   // Otherwise, it will use the emulator always
   if (emulatorConfig.enabled) {
     process.env.FIRESTORE_EMULATOR_HOST = `${emulatorConfig.host}:${emulatorConfig.firestorePort}`;
@@ -22,4 +23,8 @@ export const initFirebaseAdmin = (): void => {
       }),
     });
   }
-};
+} catch (error) {
+  console.log('Error initializing firebase admin', error);
+}
+
+export { admin };

@@ -11,6 +11,7 @@ interface Props {
 
 const inter = Inter({ subsets: ['latin'] });
 
+// TODO: Change this when starting a new project
 export const metadata: Metadata = {
   title: 'Side web boilerplate',
   description: 'A boilerplate for side projects frontend SSR',
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>
