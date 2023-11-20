@@ -26,11 +26,11 @@ export const Protected = ({ children }: Props): ReactNode => {
     if (!user) {
       router.push('/login');
     }
-  }, [loading]);
+  }, [loading, user]);
 
-  if (loading) {
-    return <p>Loading...</p>;
+  if (!loading && !!user) {
+    return <>{children}</>;
   }
 
-  return <>{children}</>;
+  return <p>Loading...</p>;
 };
