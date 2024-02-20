@@ -13,7 +13,7 @@ interface Props {
   children: ReactNode;
 }
 
-const FirebaseProviders = ({ children }: Props): JSX.Element => {
+const FirebaseSdkProviders = ({ children }: Props): JSX.Element => {
   const firestore = getFirestore(useFirebaseApp());
   const auth = getAuth(useFirebaseApp());
 
@@ -22,7 +22,7 @@ const FirebaseProviders = ({ children }: Props): JSX.Element => {
       connectAuthEmulator(auth, getAuthEmulatorHost());
       connectFirestoreEmulator(firestore, emulatorConfig.host, emulatorConfig.firestorePort);
     } catch (error) {
-      // Catch for re-rendering error
+      // Catch to avoid re-rendering error
     }
   }
 
@@ -36,9 +36,9 @@ const FirebaseProviders = ({ children }: Props): JSX.Element => {
 const Providers = ({ children }: Props): JSX.Element => {
   return (
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      <FirebaseProviders>
+      <FirebaseSdkProviders>
         <AuthContextProvider>{children}</AuthContextProvider>
-      </FirebaseProviders>
+      </FirebaseSdkProviders>
     </FirebaseAppProvider>
   );
 };

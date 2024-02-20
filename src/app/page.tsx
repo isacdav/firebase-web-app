@@ -4,7 +4,6 @@ import { Protected } from '@/components';
 import { admin } from '@/lib/firebase/admin';
 
 export const getUserData = async () => {
-  // NOTE: here can be a trycatch for validatin the session cookie of a fn to do so
   const session = cookies().get('session')?.value ?? '';
 
   if (session) {
