@@ -10,8 +10,8 @@ import { CookiesProvider } from 'react-cookie';
 import { Protected } from '@/components';
 import { AuthContextProvider } from '@/context/authContext';
 import { useFirebase } from '@/hooks';
-import { emulatorConfig, getAuthEmulatorHost } from '@/utils/config';
-import { ROUTES_PUBLIC } from '@/utils/constants';
+import { emulatorConfig, getAuthEmulatorHost } from '@/lib/config';
+import { ROUTES_PUBLIC } from '@/lib/constants';
 
 interface Props {
   children: ReactNode;

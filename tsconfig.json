@@ -25,12 +25,12 @@
       "@/firebase/*": ["firebase/*"],
       "@/actions": ["./src/actions/index.ts"],
       "@/app/*": ["./src/app/*"],
-      "@/common": ["./src/common/index.ts"],
+      "@/assets/*": ["./src/assets/*"],
       "@/components": ["./src/components/index.ts"],
       "@/context/*": ["./src/context/*"],
       "@/hooks": ["./src/hooks/index.ts"],
       "@/lib/*": ["src/lib/*"],
-      "@/utils/*": ["./src/utils/*"]
+      "@/styles/*": ["./src/styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

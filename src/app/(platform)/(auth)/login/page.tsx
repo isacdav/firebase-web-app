@@ -90,7 +90,7 @@ const Login: NextPage = () => {
                   Sign in
                 </button>
                 <p className="text-sm font-light text-gray-500">
-                  Don't have an account yet?
+                  Don&apos;t have an account yet?
                   <a href="#" className="font-medium text-red-600 hover:underline ml-2">
                     Sign up
                   </a>

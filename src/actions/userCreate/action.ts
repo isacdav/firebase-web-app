@@ -1,7 +1,7 @@
 import { database } from '@/lib/database';
 import { validateAction } from '@/lib/validateAction';
 
-import { userCreateSchema, type ActionInput, type ActionOutput } from './definitions';
+import { userCreateSchema, type ActionInput, type ActionOutput } from './action.types';
 
 const handler: ServerAction<ActionInput, ActionOutput> = async data => {
   if (!data?.uid) {

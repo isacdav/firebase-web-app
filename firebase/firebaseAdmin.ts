@@ -1,6 +1,6 @@
 import { cert, getApp, initializeApp, getApps } from 'firebase-admin/app';
 
-import { emulatorConfig, firebaseConfig, serviceAccount } from '@/utils/config';
+import { emulatorConfig, firebaseConfig, serviceAccount } from '@/lib/config';
 
 /**
  * Set environment variables for the Firestore and Auth emulators if enabled

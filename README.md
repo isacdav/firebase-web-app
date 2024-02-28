@@ -21,4 +21,3 @@ pnpm dev
 - [ ] Styles / theme
 - [ ] UI components
 - [ ] i18n localization
-- [ ] Tests

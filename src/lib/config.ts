@@ -1,3 +1,8 @@
+/**
+ * Configuration for the application from the environment variable
+ */
+
+// Client-side firebase configuration
 export const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY ?? '',
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID ?? '',
@@ -7,12 +12,14 @@ export const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ?? '',
 };
 
+// Server-side firebase configuration
 export const serviceAccount = {
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ?? '',
   clientEmail: process.env.FIREBASE_CLIENT_EMAIL ?? '',
   privateKey: process.env.FIREBASE_PRIVATE_KEY ?? '',
 };
 
+// Emulator configuration
 export const emulatorConfig = {
   enabled: process.env.NEXT_PUBLIC_EMULATOR === 'true',
   host: process.env.NEXT_PUBLIC_FIREBASE_EMULATOR_HOST ?? '',
@@ -24,4 +31,5 @@ export function getAuthEmulatorHost(): string {
   return `http://${emulatorConfig.host}:${emulatorConfig.authPort}`;
 }
 
+// Env config values
 export const envSecureCookie = process.env.NEXT_PUBLIC_SECURE_COOKIE === 'true';

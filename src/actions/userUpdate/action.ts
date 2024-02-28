@@ -4,7 +4,7 @@ import { database } from '@/lib/database';
 import { getCurrentUser } from '@/lib/serverAuth';
 import { validateAction } from '@/lib/validateAction';
 
-import { userUpdateSchema, type ActionInput, type ActionOutput } from './definitions';
+import { userUpdateSchema, type ActionInput, type ActionOutput } from './action.types';
 
 const handler: ServerAction<ActionInput, ActionOutput> = async data => {
   const user = await getCurrentUser();

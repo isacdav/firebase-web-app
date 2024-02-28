@@ -11,8 +11,7 @@ interface Props {
 }
 
 /**
- * This component is used to protect pages from unauthenticated users
- * Can protect pages and layouts
+ * This component is used to protect children pages from unauthenticated users
  */
 export const Protected = ({ children }: Props): ReactNode => {
   const router = useRouter();

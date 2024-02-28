@@ -4,7 +4,7 @@ import { getAuth, type UserRecord } from 'firebase-admin/auth';
 import { cookies } from 'next/headers';
 
 import { adminApp } from '@/firebase/firebaseAdmin';
-import { COOKIE_SESSION } from '@/utils/constants';
+import { COOKIE_SESSION } from '@/lib/constants';
 
 const auth = getAuth(adminApp);
 

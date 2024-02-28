@@ -4,8 +4,8 @@ import { onIdTokenChanged, type User } from 'firebase/auth';
 import { useCookies } from 'react-cookie';
 
 import { useFirebase } from '@/hooks';
-import { envSecureCookie } from '@/utils/config';
-import { COOKIE_SESSION } from '@/utils/constants';
+import { envSecureCookie } from '@/lib/config';
+import { COOKIE_SESSION } from '@/lib/constants';
 
 interface AuthContextState {
   user: User | undefined;

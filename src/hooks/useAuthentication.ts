@@ -9,6 +9,10 @@ interface UseAuthenticationHook {
   register: (email: string, password: string) => Promise<boolean>;
 }
 
+/**
+ * Hook to handle authentication actions
+ * @returns The authentication actions for signin, signout, and register
+ */
 export function useAuthentication(): UseAuthenticationHook {
   const { auth } = useFirebase();
   const { data: registerData, execute } = useAction(userCreate);
@@ -33,19 +37,14 @@ export function useAuthentication(): UseAuthenticationHook {
 
   async function register(email: string, password: string): Promise<boolean> {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+      const { user } = await createUserWithEmailAndPassword(auth, email, password);
 
       await execute({
-        uid: user?.uid,
+        uid: user?.uid ?? '',
         email: user?.email ?? '',
       });
 
-      if (!registerData) {
-        return false;
-      }
-
-      return true;
+      return !!registerData;
     } catch (error) {
       return false;
     }
