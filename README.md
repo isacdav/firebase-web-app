@@ -1,6 +1,6 @@
 # 🔥 Next.js Firebase Boilerplate
 
-Web boilerplate with Next.js and Firebase. Ideal for side projects.
+Web app boilerplate with Next.js and Firebase. Ideal for side projects.
 
 ## Getting Started
 
@@ -18,10 +18,7 @@ pnpm dev
 
 ## Roadmap
 
-- [ ] Auth
-- [ ] Auth SSR
-- [ ] State management
 - [ ] Styles / theme
 - [ ] UI components
+- [ ] i18n localization
 - [ ] Tests
-- [x] Allow emulators use

@@ -28,15 +28,21 @@
     "@typescript-eslint/strict-boolean-expressions": 0,
     "@typescript-eslint/space-before-function-paren": 0,
     "@typescript-eslint/explicit-function-return-type": 1,
+    "@typescript-eslint/no-unsafe-argument": 0,
+    "react-hooks/exhaustive-deps": "off",
     "import/order": [
       "error",
       {
-        "groups": ["builtin", "external", "internal"],
+        "groups": ["external", "builtin", "internal", "sibling", "parent", "index"],
         "pathGroups": [
           {
             "pattern": "react",
             "group": "external",
             "position": "before"
+          },
+          {
+            "pattern": "@/**",
+            "group": "internal"
           }
         ],
         "pathGroupsExcludedImportTypes": ["react"],

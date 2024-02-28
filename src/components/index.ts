@@ -1,6 +1,1 @@
-// Atoms
-export * from './atoms/protected/protected';
-
-// Molecules
-
-// Organisms
+export * from './layouts/Protected';
