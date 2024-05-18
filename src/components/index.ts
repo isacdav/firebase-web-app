@@ -1,6 +1,7 @@
-// Atoms
-export * from './atoms/protected/protected';
+// elements
+export * from './elements/Link';
+export * from './elements/ThemeToggle';
 
-// Molecules
-
-// Organisms
+// layouts
+export * from './layouts/Protected';
+export * from './layouts/Theme';

@@ -1,8 +1,24 @@
-# 🔥 Next.js Firebase Boilerplate
+# 🔥 Next.js + Firebase
 
-Web boilerplate with Next.js and Firebase. Ideal for side projects.
+Experimental web app project with Next.js and Firebase.
+
+### Features
+
+- Auth
+- Server actions
+- Next.js App Router
+- Shadcn UI & Tailwind CSS
+- Firestore acces with Typesaurus
+- Emulators for local development
 
 ## Getting Started
+
+### Pre-requisites
+
+- Node.js
+- pnpm
+- Firebase CLI
+- Firebase project
 
 ### Install dependencies.
 
@@ -16,12 +32,8 @@ pnpm install
 pnpm dev
 ```
 
-## Roadmap
+### TODO
 
-- [ ] Auth
-- [ ] Auth SSR
-- [ ] State management
-- [ ] Styles / theme
-- [ ] UI components
-- [ ] Tests
-- [x] Allow emulators use
+- [ ] Display login result & redirect to dashboard
+- [ ] Reset password
+- [ ] Internationalization

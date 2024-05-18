@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
+import { type Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import Providers from '@/app/providers';
+import { ThemeProvider } from '@/components';
 
-import './globals.css';
+import '@/styles/globals.css';
 
 interface Props {
   children: React.ReactNode;
@@ -11,17 +11,21 @@ interface Props {
 
 const inter = Inter({ subsets: ['latin'] });
 
-// TODO: Change this when starting a new project
 export const metadata: Metadata = {
-  title: 'Side web boilerplate',
-  description: 'A boilerplate for side projects frontend SSR',
+  title: 'Firebase Web App',
+  description: 'Starter web app | Next.js + Firebase',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
-const RootLayout = ({ children }: Props) => {
+const RootLayout = ({ children }: Props): JSX.Element => {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
