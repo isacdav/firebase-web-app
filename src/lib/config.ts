@@ -33,3 +33,4 @@ export function getAuthEmulatorHost(): string {
 
 // Env config values
 export const envSecureCookie = process.env.NEXT_PUBLIC_SECURE_COOKIE === 'true';
+export const forgotPasswordURL = process.env.NEXT_PUBLIC_URL_FORGOT_PASSWORD ?? '';

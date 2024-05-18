@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, type ReactNode, useCallback } from 'react';
+import { useCallback, useEffect, type ReactNode } from 'react';
 
 import { connectAuthEmulator } from 'firebase/auth';
 import { connectFirestoreEmulator } from 'firebase/firestore';

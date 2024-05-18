@@ -1,6 +1,8 @@
 import { type Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import { ThemeProvider } from '@/components';
+
 import '@/styles/globals.css';
 
 interface Props {
@@ -10,8 +12,8 @@ interface Props {
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Side web boilerplate',
-  description: 'A boilerplate for side projects | Next.js + Firebase',
+  title: 'Firebase Web App',
+  description: 'Starter web app | Next.js + Firebase',
   icons: {
     icon: '/favicon.ico',
   },
@@ -19,8 +21,12 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: Props): JSX.Element => {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 };
