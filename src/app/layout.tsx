@@ -1,7 +1,7 @@
 import { type Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { ThemeProvider } from '@/components';
+import { ThemeProvider, Toaster } from '@/components';
 
 import '@/styles/globals.css';
 
@@ -25,6 +25,7 @@ const RootLayout = ({ children }: Props): JSX.Element => {
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

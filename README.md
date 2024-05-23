@@ -34,6 +34,4 @@ pnpm dev
 
 ### TODO
 
-- [ ] Display login result & redirect to dashboard
-- [ ] Reset password
-- [ ] Internationalization
+- [ ] Locale

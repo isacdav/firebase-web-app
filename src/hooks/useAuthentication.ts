@@ -1,8 +1,10 @@
 import {
+  confirmPasswordReset,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
+  verifyPasswordResetCode,
   type ActionCodeSettings,
 } from 'firebase/auth';
 
@@ -10,61 +12,51 @@ import { userCreate } from '@/actions';
 import { useAction, useFirebase } from '@/hooks';
 import { forgotPasswordURL } from '@/lib/config';
 
-interface UseAuthenticationHook {
-  signin: (email: string, password: string) => Promise<boolean>;
-  signout: () => Promise<boolean>;
-  register: (email: string, password: string) => Promise<boolean>;
-  forgotPassword: (email: string) => Promise<boolean>;
+interface AuthResult {
+  success: boolean;
+  errorMessage?: string;
 }
 
 /**
  * Hook to handle authentication actions
- * @returns The authentication actions for signin, signout, and register
+ * @returns The authentication actions for signin, signout, register, etc
  */
-export function useAuthentication(): UseAuthenticationHook {
+export function useAuthentication() {
   const { auth } = useFirebase();
-  const { data: registerData, execute } = useAction(userCreate);
+  const { execute } = useAction(userCreate);
 
-  async function signin(email: string, password: string): Promise<boolean> {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      return true;
-    } catch (error) {
-      return false;
-    }
+  async function signin(email: string, password: string) {
+    return signInWithEmailAndPassword(auth, email, password);
   }
 
-  async function signout(): Promise<boolean> {
-    try {
-      await signOut(auth);
-      return true;
-    } catch (error) {
-      return false;
-    }
+  async function signout() {
+    return signOut(auth);
   }
 
-  async function register(email: string, password: string): Promise<boolean> {
-    try {
-      const { user } = await createUserWithEmailAndPassword(auth, email, password);
+  async function register(email: string, password: string) {
+    const { user } = await createUserWithEmailAndPassword(auth, email, password);
 
-      await execute({
-        uid: user?.uid ?? '',
-        email: user?.email ?? '',
-      });
-
-      return !!registerData;
-    } catch (error) {
-      return false;
-    }
+    await execute({
+      uid: user?.uid ?? '',
+      email: user?.email ?? '',
+    });
   }
 
-  async function forgotPassword(email: string): Promise<boolean> {
-    try {
-      const options: ActionCodeSettings = {
-        url: forgotPasswordURL,
-      };
+  async function forgotPassword(email: string) {
+    const options: ActionCodeSettings = {
+      url: forgotPasswordURL,
+    };
 
-      await sendPasswordResetEmail(auth, email, options);
+    return sendPasswordResetEmail(auth, email, options);
+  }
+
+  async function resetPassword(password: string, oobCode: string) {
+    return confirmPasswordReset(auth, oobCode, password);
+  }
+
+  async function verifyOobCode(oobCode: string): Promise<Boolean> {
+    try {
+      await verifyPasswordResetCode(auth, oobCode);
       return true;
     } catch (error) {
       return false;
@@ -76,5 +68,7 @@ export function useAuthentication(): UseAuthenticationHook {
     signout,
     register,
     forgotPassword,
-  };
+    resetPassword,
+    verifyOobCode,
+  } as const;
 }

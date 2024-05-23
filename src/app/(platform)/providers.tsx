@@ -7,7 +7,7 @@ import { connectFirestoreEmulator } from 'firebase/firestore';
 import { usePathname } from 'next/navigation';
 import { CookiesProvider } from 'react-cookie';
 
-import { Protected } from '@/components';
+import { RouteProtector } from '@/components';
 import { AuthContextProvider } from '@/context/authContext';
 import { useFirebase } from '@/hooks';
 import { emulatorConfig, getAuthEmulatorHost } from '@/lib/config';
@@ -20,6 +20,8 @@ interface Props {
 const Providers = ({ children }: Props): JSX.Element => {
   const pathname = usePathname();
   const { auth, firestore } = useFirebase();
+
+  const isPublic = ROUTES_PUBLIC.includes(pathname);
 
   const connectEmulators = useCallback(() => {
     if (emulatorConfig.enabled) {
@@ -39,7 +41,9 @@ const Providers = ({ children }: Props): JSX.Element => {
   return (
     <CookiesProvider>
       <AuthContextProvider>
-        {ROUTES_PUBLIC.includes(pathname) ? children : <Protected>{children}</Protected>}
+        <RouteProtector isPublic={isPublic} redirectPath={isPublic ? '/profile' : '/login'}>
+          {children}
+        </RouteProtector>
       </AuthContextProvider>
     </CookiesProvider>
   );

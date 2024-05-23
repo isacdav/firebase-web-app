@@ -2,11 +2,12 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { type NextPage } from 'next';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { Link } from '@/components';
-import { useAuthentication } from '@/hooks';
+import { useAuthentication, useToast } from '@/hooks';
 import { loginSchema } from '@/lib/schemas/authSchemas';
 import {
   Button,
@@ -25,6 +26,8 @@ import {
 } from '@/ui';
 
 const Login: NextPage = () => {
+  const { push } = useRouter();
+  const { toast } = useToast();
   const { signin } = useAuthentication();
 
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -35,11 +38,25 @@ const Login: NextPage = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof loginSchema>) {
-    const email = values.email;
-    const password = values.password;
+  async function onSubmit(values: z.infer<typeof loginSchema>) {
+    try {
+      const email = values.email;
+      const password = values.password;
 
-    signin(email, password);
+      await signin(email, password);
+
+      toast({
+        title: 'Welcome back!',
+        description: 'You have successfully logged in.',
+      });
+
+      push('/profile');
+    } catch (error) {
+      toast({
+        description: 'Wrong email or password.',
+        variant: 'destructive',
+      });
+    }
   }
 
   return (

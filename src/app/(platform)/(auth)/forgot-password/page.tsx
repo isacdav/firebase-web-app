@@ -2,10 +2,11 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { type NextPage } from 'next';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { useAuthentication } from '@/hooks';
+import { useAuthentication, useToast } from '@/hooks';
 import { forgotPasswordSchema } from '@/lib/schemas/authSchemas';
 import {
   Button,
@@ -23,7 +24,9 @@ import {
   Input,
 } from '@/ui';
 
-const Register: NextPage = () => {
+const ForgotPassword: NextPage = () => {
+  const { push } = useRouter();
+  const { toast } = useToast();
   const { forgotPassword } = useAuthentication();
 
   const form = useForm<z.infer<typeof forgotPasswordSchema>>({
@@ -33,10 +36,24 @@ const Register: NextPage = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof forgotPasswordSchema>) {
-    const email = values.email;
+  async function onSubmit(values: z.infer<typeof forgotPasswordSchema>) {
+    try {
+      const email = values.email;
 
-    forgotPassword(email);
+      await forgotPassword(email);
+
+      toast({
+        title: 'Check your email!',
+        description: 'We have sent you a link to reset your password.',
+      });
+
+      push('/login');
+    } catch (error) {
+      toast({
+        description: 'An error occurred. Please try again.',
+        variant: 'destructive',
+      });
+    }
   }
 
   return (
@@ -82,4 +99,4 @@ const Register: NextPage = () => {
   );
 };
 
-export default Register;
+export default ForgotPassword;

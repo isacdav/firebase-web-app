@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { onIdTokenChanged, type User } from 'firebase/auth';
 import { useCookies } from 'react-cookie';
 
+import { Loader } from '@/components';
 import { useFirebase } from '@/hooks';
 import { envSecureCookie } from '@/lib/config';
 import { COOKIE_SESSION } from '@/lib/constants';
@@ -42,7 +43,9 @@ export const AuthContextProvider = ({ children }: any): JSX.Element => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading }}>{loading ? <p>Loading...</p> : children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, loading }}>
+      {loading ? <Loader fullScreen size="lg" /> : children}
+    </AuthContext.Provider>
   );
 };
 

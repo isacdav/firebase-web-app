@@ -6,20 +6,11 @@ import { getFirestore, type Firestore } from 'firebase/firestore';
 
 import { firebaseConfig } from '@/lib/config';
 
-interface UseFirebaseHook {
-  /**
-   * Firestore instance for emulators purposes — to query data use `@/lib/database`
-   */
-  firestore: Firestore;
-  app: FirebaseApp;
-  auth: Auth;
-}
-
 /**
  * Hook to get the Firebase app, auth, and firestore instances already initialized
  * @returns The Firebase `app`, `auth`, and `firestore` instances
  */
-export function useFirebase(): UseFirebaseHook {
+export function useFirebase() {
   const app: FirebaseApp = useMemo(
     () =>
       getApps().length ? getApp(firebaseConfig.projectId) : initializeApp(firebaseConfig, firebaseConfig.projectId),
@@ -28,11 +19,14 @@ export function useFirebase(): UseFirebaseHook {
 
   const auth: Auth = useMemo(() => getAuth(app), [app]);
 
+  /**
+   * Firestore instance for emulators purposes — to query data use `@/lib/database`
+   */
   const firestore: Firestore = useMemo(() => getFirestore(app), [app]);
 
   return {
     app,
     auth,
     firestore,
-  };
+  } as const;
 }
