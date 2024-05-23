@@ -23,6 +23,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
+  Typography,
 } from '@/ui';
 
 const Register: NextPage = () => {
@@ -63,9 +64,9 @@ const Register: NextPage = () => {
   return (
     <main>
       <div className="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
-        <a href="#" className="text-t-primary mb-6 flex items-center text-2xl font-semibold">
+        <Typography variant="h2" className="mb-4">
           Register
-        </a>
+        </Typography>
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full md:w-5/12">
@@ -123,12 +124,12 @@ const Register: NextPage = () => {
                   Sign Up
                 </Button>
 
-                <p className="pt-4 text-sm font-light text-muted-foreground">
+                <Typography variant="mutedText" className="pt-4">
                   Have an account?
                   <Link href="/login" className="ml-2">
                     Sign in
                   </Link>
-                </p>
+                </Typography>
               </CardFooter>
             </Card>
           </form>

@@ -22,6 +22,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
+  Typography,
 } from '@/ui';
 
 const ForgotPassword: NextPage = () => {
@@ -59,9 +60,9 @@ const ForgotPassword: NextPage = () => {
   return (
     <main>
       <div className="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
-        <a href="#" className="text-t-primary mb-6 flex items-center text-2xl font-semibold">
+        <Typography variant="h2" className="mb-4">
           Forgot Password
-        </a>
+        </Typography>
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full md:w-5/12">
