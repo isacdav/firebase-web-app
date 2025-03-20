@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 import { LoaderCircle } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -15,7 +17,7 @@ const sizeClasses = {
   lg: 'h-16 w-16',
 };
 
-export const Loader = ({ containerClassName, iconClassName, fullScreen, size = 'sm' }: Props) => {
+export const Loader: FC<Props> = ({ containerClassName, iconClassName, fullScreen, size = 'sm' }: Props) => {
   return (
     <div className={cn('flex items-center justify-center', fullScreen ? 'h-screen w-full' : null, containerClassName)}>
       <LoaderCircle className={cn(sizeClasses[size], 'animate-spin text-primary', iconClassName)} />

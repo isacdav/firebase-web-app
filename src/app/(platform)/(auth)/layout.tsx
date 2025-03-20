@@ -1,10 +1,10 @@
+import { PropsWithChildren } from 'react';
+
+import { NextPage } from 'next';
+
 import { ThemeToggle } from '@/components';
 
-interface Props {
-  children: React.ReactNode;
-}
-
-const AuthLayout = ({ children }: Props): JSX.Element => {
+const AuthLayout: NextPage<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <div className="absolute right-2 top-2">

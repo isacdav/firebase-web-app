@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, type ReactNode } from 'react';
+import { FC, PropsWithChildren, useCallback, useEffect } from 'react';
 
 import { connectAuthEmulator } from 'firebase/auth';
 import { connectFirestoreEmulator } from 'firebase/firestore';
@@ -13,11 +13,7 @@ import { useFirebase } from '@/hooks';
 import { emulatorConfig, getAuthEmulatorHost } from '@/lib/config';
 import { ROUTES_PUBLIC } from '@/lib/constants';
 
-interface Props {
-  children: ReactNode;
-}
-
-const Providers = ({ children }: Props): JSX.Element => {
+const Providers: FC<PropsWithChildren> = ({ children }) => {
   const pathname = usePathname();
   const { auth, firestore } = useFirebase();
 

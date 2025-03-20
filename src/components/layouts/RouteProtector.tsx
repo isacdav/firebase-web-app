@@ -1,19 +1,18 @@
 'use client';
 
-import { ReactNode, useEffect, useState } from 'react';
+import { FC, PropsWithChildren, useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
 import { Loader } from '@/components';
 import { useAuthContext } from '@/context/authContext';
 
-interface Props {
-  children: ReactNode;
+interface Props extends PropsWithChildren {
   redirectPath: string;
   isPublic: boolean;
 }
 
-export const RouteProtector = ({ children, redirectPath, isPublic }: Props) => {
+export const RouteProtector: FC<Props> = ({ children, redirectPath, isPublic }) => {
   const { push } = useRouter();
   const { user } = useAuthContext();
   const [shouldRender, setShouldRender] = useState(false);

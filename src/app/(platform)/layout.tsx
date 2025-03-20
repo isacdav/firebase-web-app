@@ -1,10 +1,10 @@
+import { PropsWithChildren } from 'react';
+
+import { NextPage } from 'next';
+
 import Providers from '@/app/(platform)/providers';
 
-interface Props {
-  children: React.ReactNode;
-}
-
-const PlatformLayout = ({ children }: Props): JSX.Element => {
+const PlatformLayout: NextPage<PropsWithChildren> = ({ children }) => {
   return <Providers>{children}</Providers>;
 };
 

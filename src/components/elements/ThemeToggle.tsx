@@ -1,11 +1,13 @@
 'use client';
 
+import { FC } from 'react';
+
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import { Button } from '@/ui';
 
-export const ThemeToggle = () => {
+export const ThemeToggle: FC = () => {
   const { theme, setTheme } = useTheme();
 
   const changeTheme = () => {

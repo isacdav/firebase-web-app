@@ -1,9 +1,11 @@
 'use client';
 
+import { FC } from 'react';
+
 import { useToast } from '@/hooks';
 import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from '@/ui';
 
-export const Toaster = () => {
+export const Toaster: FC = () => {
   const { toasts } = useToast();
 
   return (
